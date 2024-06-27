@@ -17,10 +17,13 @@ app.use(express.json());
 // Enable CORS for all requests
 app.use(
   cors({
-    origin: "https://my-group-chat.vercel.app/",
-    credentials: true, // Allow credentials (e.g., cookies, authorization headers)
+    origin: [
+      "https://my-group-chat.vercel.app",
+      "https://chat-g8qz7gbk1-yug2099s-projects.vercel.app",
+    ],
+    credentials: true,
     methods: ["GET", "POST", "PUT"],
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow credentials (e.g., cookies, authorization headers)
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
