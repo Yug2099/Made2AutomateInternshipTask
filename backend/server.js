@@ -17,7 +17,7 @@ app.use(express.json());
 // Enable CORS for all requests
 app.use(
   cors({
-    origin: "https://chat-3dr6h1vkg-yug2099s-projects.vercel.app/",
+    origin: "https://chat-3dr6h1vkg-yug2099s-projects.vercel.app/" || "https://my-group-chat.vercel.app/",
     credentials: true, // Allow credentials (e.g., cookies, authorization headers)
     methods: ["GET", "POST", "PUT"],
     allowedHeaders: ["Content-Type", "Authorization"], // Allow credentials (e.g., cookies, authorization headers)
@@ -42,7 +42,7 @@ const server = app.listen(PORT, console.log(`Server started at port ${PORT}`));
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chat-3dr6h1vkg-yug2099s-projects.vercel.app/",
+    origin: "https://chat-3dr6h1vkg-yug2099s-projects.vercel.app/" || "https://my-group-chat.vercel.app/",
   },
 });
 
