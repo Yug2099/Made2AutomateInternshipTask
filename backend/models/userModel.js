@@ -5,7 +5,7 @@ const userModel  = mongoose.Schema(
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    pic: { type: String, default: "https://icon-library.com/images/anonymous-avatar-icon-25.jpg" },
+    pic: { type: String, default: "https://res.cloudinary.com/yug-chatapp/image/upload/v1717512787/r6nvuv4qgzwjnlgofmlt.png" },
   },
   { timestamps: true }
 );

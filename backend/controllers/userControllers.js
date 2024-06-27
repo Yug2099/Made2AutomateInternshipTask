@@ -1,5 +1,8 @@
 //import express-async-handler to automaticlly handle async errors
 const asyncHandler = require("express-async-handler");
+const { OAuth2Client } = require("google-auth-library");
+// const User = require("../models/userModel");
+// const generateToken = require("../config/generateToken");
 const User = require("../models/userModel");
 const generateToken = require("../config/generateToken");
 
@@ -83,4 +86,40 @@ const allUsers = asyncHandler(async (req, res) => {
   res.send(users);
 });
 
-module.exports = { registerUser, authUser, allUsers };
+
+const client = new OAuth2Client("YOUR_GOOGLE_CLIENT_ID");
+
+const googleLogin = asyncHandler(async (req, res) => {
+  const { token } = req.body;
+
+  const ticket = await client.verifyIdToken({
+    idToken: token,
+    audience: "383877989715-odr1dp3akblaeavsmpf0hbqv8gj785nv.apps.googleusercontent.com",
+  });
+
+  const { name, email, picture } = ticket.getPayload();
+
+  let user = await User.findOne({ email });
+
+  if (!user) {
+    user = await User.create({
+      name,
+      email,
+      pic: picture,
+      password: Math.random().toString(36).slice(-8), // Generate a random password for the user
+    });
+  }
+
+  res.status(201).json({
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    pic: user.pic,
+    token: generateToken(user._id),
+  });
+});
+
+module.exports = { registerUser, authUser, allUsers, googleLogin };
+
+
+// module.exports = { registerUser, authUser, allUsers };
