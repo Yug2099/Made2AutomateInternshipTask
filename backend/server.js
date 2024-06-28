@@ -45,7 +45,7 @@ const server = app.listen(PORT, console.log(`Server started at port ${PORT}`));
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://my-group-chat.vercel.app/",
+    origin: "https://my-group-chat.vercel.app",
   },
 });
 
