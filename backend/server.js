@@ -20,6 +20,7 @@ app.use(
     origin: [
       "https://my-group-chat.vercel.app",
       "https://chat-g8qz7gbk1-yug2099s-projects.vercel.app",
+      "https://chatting-application-roan.vercel.app",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT"],
@@ -45,7 +46,10 @@ const server = app.listen(PORT, console.log(`Server started at port ${PORT}`));
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: ["https://my-group-chat.vercel.app","https://chatting-application-roan.vercel.app"],
+    origin: [
+      "https://my-group-chat.vercel.app",
+      "https://chatting-application-roan.vercel.app",
+    ],
   },
 });
 
