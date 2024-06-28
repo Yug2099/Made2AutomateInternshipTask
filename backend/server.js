@@ -51,6 +51,7 @@ const io = require("socket.io")(server, {
       "https://chatting-application-roan.vercel.app",
     ],
     methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   },
 });
