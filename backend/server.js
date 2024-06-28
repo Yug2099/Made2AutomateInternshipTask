@@ -50,6 +50,8 @@ const io = require("socket.io")(server, {
       "https://my-group-chat.vercel.app",
       "https://chatting-application-roan.vercel.app",
     ],
+    methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
