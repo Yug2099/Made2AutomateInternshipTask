@@ -8,4 +8,4 @@ router.route("/").post(registerUser);
 router.post('/login', authUser);
 router.post("/google-login", googleLogin);
 
-module.exports = router;
+module.exports =router;
